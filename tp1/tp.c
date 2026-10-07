@@ -37,5 +37,17 @@ void print_gdt_content(gdt_reg_t gdtr_ptr) {
 
 
 void tp() {
-	// TODO
+	gdt_reg_t gdtr_p;
+	get_gdtr(gdtr_p);
+	// Question 2 : Affichage du contenu de table de type GDT
+	print_gdt_content(gdtr_p) ;
+
+	// Question 3 : 
+	get_seg_sel(ss)
+	get_seg_sel(ds)
+	get_seg_sel(es)
+	get_seg_sel(fs)
+	get_seg_sel(gs)
+
+	
 }

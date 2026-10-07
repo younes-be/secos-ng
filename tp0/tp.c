@@ -11,16 +11,16 @@ void tp() {
    debug("MBI flags 0x%x\n", info->mbi->flags);
 
    // on recup les bornes de la table mmap
-   uint8_t* current = (uint8_t*)info->mbi->mmap_addr;
-   uint8_t* end_mmap = current + info->mbi->mmap_length;
+   multiboot_uint32_t current = info->mbi->mmap_addr;
+   multiboot_uint32_t end_mmap = current + info->mbi->mmap_length;
 
    // parcours de la liste des regions mémoire
    while (current < end_mmap) {
       memory_map_t *entry = (memory_map_t *)current;
 
       // bornes de la plage (adresse de fin : addr + len - 1)
-      uint32_t start = (uint32_t)entry->addr;
-      uint32_t end   = (uint32_t)entry->addr + (uint32_t)entry->len - 1;
+      multiboot_uint32_t start = (multiboot_uint64_t)entry->addr;
+      multiboot_uint32_t end   = (multiboot_uint64_t)entry->addr + (multiboot_uint64_t)entry->len - 1;
 
       // chaîne de caractères du type de mémoire
       const char *type_str = "MULTIBOOT_MEMORY_RESERVED";
