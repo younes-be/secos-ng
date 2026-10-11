@@ -145,7 +145,8 @@ ring 0, il n'y a pas de séparation de privilèges entre noyau et utilisateur.
 
     // et on met à jour le registre de code CS via un saut lointain
     set_cs(0x08); 
-	// On utilise pas de variable car une erreur provient de la macro set_cs définie dans segmem.h. La contrainte "i"(_cs) exige que la valeur passée soit une constante connue à la compilation .
+	// On utilise pas de variable car une erreur provient de la macro set_cs définie dans segmem.h. 
+    // La contrainte "i"(_cs) exige que la valeur passée soit une constante connue à la compilation .
 
     // Question 7 : On check les valeurs de la GDT
     debug("\nContenu de la NOUVELLE GDT\n");
@@ -158,7 +159,6 @@ ring 0, il n'y a pas de séparation de privilèges entre noyau et utilisateur.
     debug("Q8.1 : chargement du segment de code dans DS\n");
     uint16_t code_selector = get_seg_sel(cs);
     set_ds(code_selector);
-    set_ds(0x10);
     debug("Q8.1 : selecteur CS (0x%x) charge dans DS avec succes\n",
           code_selector);
 
